@@ -1,0 +1,14 @@
+snowflake_profile:
+  target: dev
+  outputs:
+    dev:
+      type: snowflake
+      account: ihc73393.us-east-1  # from your Snowflake link
+      user: deepakgadde25
+      password: Gaddepandu@7987
+      role: ACCOUNTADMIN               # or a custom role if set
+      warehouse: NEWCOMPUTE_WH
+      database: FINANCIAL_DB
+      schema: RAW
+      threads: 1
+      client_session_keep_alive: false

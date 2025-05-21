@@ -1,0 +1,46 @@
+[2025-05-20T15:45:05.658+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: crypto_elt_pipeline.load_to_snowflake manual__2025-05-20T15:39:46.962180+00:00 [queued]>
+[2025-05-20T15:45:05.662+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: crypto_elt_pipeline.load_to_snowflake manual__2025-05-20T15:39:46.962180+00:00 [queued]>
+[2025-05-20T15:45:05.663+0000] {taskinstance.py:2170} INFO - Starting attempt 2 of 2
+[2025-05-20T15:45:05.668+0000] {taskinstance.py:2191} INFO - Executing <Task(PythonOperator): load_to_snowflake> on 2025-05-20 15:39:46.962180+00:00
+[2025-05-20T15:45:05.673+0000] {standard_task_runner.py:60} INFO - Started process 354 to run task
+[2025-05-20T15:45:05.679+0000] {standard_task_runner.py:87} INFO - Running: ['***', 'tasks', 'run', 'crypto_elt_pipeline', 'load_to_snowflake', 'manual__2025-05-20T15:39:46.962180+00:00', '--job-id', '17', '--raw', '--subdir', 'DAGS_FOLDER/elt_dag.py', '--cfg-path', '/tmp/tmpbgwbmv0_']
+[2025-05-20T15:45:05.682+0000] {standard_task_runner.py:88} INFO - Job 17: Subtask load_to_snowflake
+[2025-05-20T15:45:05.696+0000] {logging_mixin.py:188} WARNING - /home/***/.local/lib/python3.9/site-packages/***/settings.py:194 DeprecationWarning: The sql_alchemy_conn option in [core] has been moved to the sql_alchemy_conn option in [database] - the old setting has been used, but please update your config.
+[2025-05-20T15:45:05.729+0000] {task_command.py:423} INFO - Running <TaskInstance: crypto_elt_pipeline.load_to_snowflake manual__2025-05-20T15:39:46.962180+00:00 [running]> on host fcac35b7ca48
+[2025-05-20T15:45:05.781+0000] {taskinstance.py:2480} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='deepak' AIRFLOW_CTX_DAG_ID='crypto_elt_pipeline' AIRFLOW_CTX_TASK_ID='load_to_snowflake' AIRFLOW_CTX_EXECUTION_DATE='2025-05-20T15:39:46.962180+00:00' AIRFLOW_CTX_TRY_NUMBER='2' AIRFLOW_CTX_DAG_RUN_ID='manual__2025-05-20T15:39:46.962180+00:00'
+[2025-05-20T15:45:05.782+0000] {logging_mixin.py:188} INFO - [INFO] Starting load to Snowflake...
+[2025-05-20T15:45:05.783+0000] {logging_mixin.py:188} INFO - [INFO] Loading /opt/***/data/raw/ethereum_metadata.csv to table: ETHEREUM_METADATA
+[2025-05-20T15:45:05.783+0000] {connection.py:370} INFO - Snowflake Connector for Python Version: 3.6.0, Python Version: 3.9.18, Platform: Linux-6.10.14-linuxkit-aarch64-with-glibc2.36
+[2025-05-20T15:45:05.791+0000] {taskinstance.py:2698} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.9/site-packages/airflow/models/taskinstance.py", line 433, in _execute_task
+    result = execute_callable(context=context, **execute_callable_kwargs)
+  File "/home/airflow/.local/lib/python3.9/site-packages/airflow/operators/python.py", line 199, in execute
+    return_value = self.execute_callable()
+  File "/home/airflow/.local/lib/python3.9/site-packages/airflow/operators/python.py", line 216, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+  File "/opt/airflow/etl_scripts/load_to_snowflake.py", line 77, in load_data_to_snowflake
+    load_csv_to_table(os.path.join(RAW_DIR, file), table_name)
+  File "/opt/airflow/etl_scripts/load_to_snowflake.py", line 45, in load_csv_to_table
+    conn = get_snowflake_connection()
+  File "/opt/airflow/etl_scripts/load_to_snowflake.py", line 24, in get_snowflake_connection
+    return snowflake.connector.connect(
+  File "/home/airflow/.local/lib/python3.9/site-packages/snowflake/connector/__init__.py", line 54, in Connect
+    return SnowflakeConnection(**kwargs)
+  File "/home/airflow/.local/lib/python3.9/site-packages/snowflake/connector/connection.py", line 413, in __init__
+    self.connect(**kwargs)
+  File "/home/airflow/.local/lib/python3.9/site-packages/snowflake/connector/connection.py", line 667, in connect
+    self.__config(**kwargs)
+  File "/home/airflow/.local/lib/python3.9/site-packages/snowflake/connector/connection.py", line 1120, in __config
+    Error.errorhandler_wrapper(
+  File "/home/airflow/.local/lib/python3.9/site-packages/snowflake/connector/errors.py", line 290, in errorhandler_wrapper
+    handed_over = Error.hand_to_other_handler(
+  File "/home/airflow/.local/lib/python3.9/site-packages/snowflake/connector/errors.py", line 348, in hand_to_other_handler
+    connection.errorhandler(connection, cursor, error_class, error_value)
+  File "/home/airflow/.local/lib/python3.9/site-packages/snowflake/connector/errors.py", line 221, in default_errorhandler
+    raise error_class(
+snowflake.connector.errors.ProgrammingError: 251005: 251005: User is empty
+[2025-05-20T15:45:05.795+0000] {taskinstance.py:1138} INFO - Marking task as FAILED. dag_id=crypto_elt_pipeline, task_id=load_to_snowflake, execution_date=20250520T153946, start_date=20250520T154505, end_date=20250520T154505
+[2025-05-20T15:45:05.801+0000] {standard_task_runner.py:107} ERROR - Failed to execute job 17 for task load_to_snowflake (251005: 251005: User is empty; 354)
+[2025-05-20T15:45:05.821+0000] {local_task_job_runner.py:234} INFO - Task exited with return code 1
+[2025-05-20T15:45:05.835+0000] {taskinstance.py:3280} INFO - 0 downstream tasks scheduled from follow-on schedule check

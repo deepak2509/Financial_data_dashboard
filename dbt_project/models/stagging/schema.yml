@@ -1,0 +1,10 @@
+version: 2
+
+sources:
+  - name: RAW
+    database: FINANCIAL_DB       # Optional if you're already in this DB
+    schema: RAW
+    tables:
+      - name: ETHEREUM_MARKET_CHART
+      - name: BITCOIN_MARKET_CHART
+      - name: SOLANA_MARKET_CHART

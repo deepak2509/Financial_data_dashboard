@@ -1,0 +1,13 @@
+name: crypto_dbt
+version: '1.0'
+config-version: 2
+
+profile: snowflake_profile
+
+model-paths: ["models"]
+target-path: "target"
+clean-targets: ["target", "dbt_modules"]
+
+models:
+  crypto_dbt:
+    +materialized: view
