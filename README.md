@@ -3,7 +3,7 @@
 ## YOU'RE CURRENTLY IN MAIN BRANCH, SELECT MASTER BRANCH FOR CODE AND DOCUMENTATION
                                           -----DEEPAK GADDE
 
-This project implements a full-stack ELT (Extract, Load, Transform) pipeline for tracking and visualizing real-time cryptocurrency market data using **CoinGecko API**, **Snowflake**, **dbt**, **Apache Airflow**, and **Power BI**.
+This project implements a full ELT (Extract, Load, Transform) pipeline for tracking and visualizing real-time cryptocurrency market data using **CoinGecko API**, **Snowflake**, **dbt**, **Apache Airflow**, and **Power BI**.
 
 ---
 
