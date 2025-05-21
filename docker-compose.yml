@@ -55,7 +55,7 @@ services:
   airflow-init:
     <<: *airflow-common
     command: bash -c "airflow db init &&
-               airflow users create --username airflow --password airflow --firstname Airflow --lastname Admin --role Admin --email admin@example.com"
+               airflow users create --username admin --password admin123 --firstname Deepak --lastname Gadde --role Admin --email deepak.gadde24@gmail.com"
 
 volumes:
   postgres-db-volume:
