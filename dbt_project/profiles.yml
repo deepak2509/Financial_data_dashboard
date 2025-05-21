@@ -3,9 +3,9 @@ snowflake_profile:
   outputs:
     dev:
       type: snowflake
-      account: ihc73393.us-east-1  # from your Snowflake link
-      user: deepakgadde25
-      password: Gaddepandu@7987
+      account: account  # from your Snowflake link
+      user: usename
+      password: password
       role: ACCOUNTADMIN               # or a custom role if set
       warehouse: NEWCOMPUTE_WH
       database: FINANCIAL_DB
